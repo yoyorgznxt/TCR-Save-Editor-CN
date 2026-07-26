@@ -56,5 +56,3 @@
 原因：程序未进行数字签名、下载量极低，系统仅根据文件陌生度触发提醒，不代表程序存在恶意风险。
 
 2. 可前往[VirusTotal 病毒检测页面](https://www.virustotal.com/gui/file/c1456f69f5dde88655065c1c3ae4dab2864b4278f570faa535613bbfdbbf27c5/detection)查看扫描报告，或自行编译源码，验证程序安全性。
-
-> （注：部分内容可能由 AI 生成）
