@@ -34,14 +34,14 @@ namespace TCRSaveEditor
         {
             if (_currentSavePath == null)
             {
-                MessageBox.Show("Open a save file first.");
+                MessageBox.Show("请先打开一个存档文件。");
                 return;
             }
             var editedFileName = System.IO.Path.GetFileNameWithoutExtension(_currentSavePath) + "_edited.sav";
             var outPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(_currentSavePath)!, editedFileName);
             if (!File.Exists(outPath))
             {
-                MessageBox.Show("No edited save file. Did you save your changes?");
+                MessageBox.Show("没有找到编辑后的存档文件。您保存修改了吗？");
                 return;
             }
             string[] TCRSEBack = { Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TotalConflictResistance", "Saved", "SaveGames", "TCRSEBackup" };
@@ -55,7 +55,7 @@ namespace TCRSaveEditor
                 }
                 catch (UnauthorizedAccessException err)
                 {
-                    MessageBox.Show("Cannot create TCRSE backup path: Access denied", backPath);
+                    MessageBox.Show("无法创建备份路径：访问被拒绝", backPath);
                     return;
                 }
             }
@@ -67,18 +67,18 @@ namespace TCRSaveEditor
             try
             {
                 File.Move(outPath, _currentSavePath, true);
-                MessageBox.Show("Modified file installed successfully.");
+                MessageBox.Show("修改已成功安装。");
             }
             catch (Exception err)
             {
-                MessageBox.Show("Error occurred while renaming file: ", err.Message);
+                MessageBox.Show("重命名文件时发生错误：", err.Message);
             }
         }
         private void action_savechanges_Click(object sender, RoutedEventArgs e)
         {
             if (_currentSavePath == null)
             {
-                MessageBox.Show("Open a save file first.");
+                MessageBox.Show("请先打开一个存档文件。");
                 return;
             }
             var editedFileName = System.IO.Path.GetFileNameWithoutExtension(_currentSavePath) + "_edited.sav";
@@ -86,11 +86,11 @@ namespace TCRSaveEditor
             try
             {
                 TCRSaveEditor.Services.GvasWriter.WriteChanges(_currentSavePath, outPath, Cities, GameMeta);
-                MessageBox.Show($"Saved and verified: {outPath}");
+                MessageBox.Show($"保存并验证成功: {outPath}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Save failed:\n{ex.Message}");
+                MessageBox.Show($"保存失败:\n{ex.Message}");
             }
             //var saveDlg = new Microsoft.Win32.SaveFileDialog
             //{
@@ -132,7 +132,7 @@ namespace TCRSaveEditor
                     TCRSaveEditor.Services.GvasReader.LoadSaveFile(dlg.FileName, Cities, GameMeta);
                     _currentSavePath = dlg.FileName;
                     Factions.Clear();
-                    Factions.Add("All");
+                    Factions.Add("全部");
                     foreach (var faction in Cities.Select(c => c.Faction).Distinct().OrderBy(f => f))
                         Factions.Add(faction);
 
@@ -140,7 +140,7 @@ namespace TCRSaveEditor
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Couldn't load that save file:\n{ex.Message}");
+                    MessageBox.Show($"无法加载该存档文件:\n{ex.Message}");
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace TCRSaveEditor
             if (FactionFilterCombo.SelectedItem is string selected)
             {
                 FilteredCities.Clear();
-                var matching = selected == "All" ? Cities : Cities.Where(c => c.Faction == selected);
+                var matching = selected == "所有" ? Cities : Cities.Where(c => c.Faction == selected);
                 foreach (var city in matching)
                     FilteredCities.Add(city);
             }
@@ -160,18 +160,18 @@ namespace TCRSaveEditor
             string helpPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Help.md");
             if (!File.Exists(helpPath))
             {
-                MessageBox.Show("Help file not found.");
+                MessageBox.Show("帮助文件不存在。");
                 return;
             }
 
             string markdownText = File.ReadAllText(helpPath);
             var engine = new MdXaml.Markdown();
             var document = engine.Transform(markdownText);
-            document.FontFamily = new System.Windows.Media.FontFamily("Calibri");
+            document.FontFamily = new System.Windows.Media.FontFamily("微软雅黑");
 
             var helpWindow = new Window
             {
-                Title = "Help",
+                Title = "帮助",
                 Width = 600,
                 Height = 500,
                 Content = new System.Windows.Controls.FlowDocumentScrollViewer { Document = document }

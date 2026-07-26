@@ -5,33 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TCRSaveEditor"
         mc:Ignorable="d"
-        Title="Total Conflict: Resistance - Save Editor" Height="450" Width="800" Background="LightGray">
+        Title="全面冲突：抵抗 - 存档编辑器" Height="450" Width="800" Background="LightGray">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Actions">
-                <MenuItem x:Name="action_opensave" Header="_Open Save" Click="action_opensave_Click"/>
-                <MenuItem x:Name="action_savechanges" Header="_Save Changes" Click="action_savechanges_Click"/>
-                <MenuItem x:Name="action_install" Header="_Install To Game" Click="action_install_Click"/>
+            <MenuItem Header="_操作">
+                <MenuItem x:Name="action_opensave" Header="_打开存档" Click="action_opensave_Click"/>
+                <MenuItem x:Name="action_savechanges" Header="_保存修改" Click="action_savechanges_Click"/>
+                <MenuItem x:Name="action_install" Header="_安装到游戏" Click="action_install_Click"/>
             </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="_View Help" Click="ViewHelp_Click"/>
+            <MenuItem Header="_帮助">
+                <MenuItem Header="_查看帮助" Click="ViewHelp_Click"/>
             </MenuItem>
         </Menu>
 
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5">
-            <TextBlock Text="Player State Stats" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"></TextBlock>
-            <TextBlock Text="Politic Points:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock Text="玩家状态" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"></TextBlock>
+            <TextBlock Text="政治点数:" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <TextBox Text="{Binding GameMeta.PoliticPoints, UpdateSourceTrigger=PropertyChanged}" Width="60" Margin="0,0,15,0"/>
-            <TextBlock Text="Authority Points:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock Text="权威点数:" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <TextBox Text="{Binding GameMeta.AuthorityPoints, UpdateSourceTrigger=PropertyChanged}" Width="60" Margin="0,0,15,0"/>
-            <TextBlock Text="Stability Points:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock Text="稳定点数:" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <TextBox Text="{Binding GameMeta.StabilityPoints, UpdateSourceTrigger=PropertyChanged}" Width="60" Margin="0,0,15,0"/>
-            <TextBlock Text="Dictatorship:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock Text="独裁度:" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <TextBox Text="{Binding GameMeta.DictatorShip, UpdateSourceTrigger=PropertyChanged}" Width="60"/>
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5">
-            <TextBlock Text="Faction:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock Text="派系:" VerticalAlignment="Center" Margin="0,0,5,0"/>
             <ComboBox x:Name="FactionFilterCombo"
                   ItemsSource="{Binding Factions}"
                   SelectionChanged="FactionFilterCombo_SelectionChanged"
@@ -51,9 +51,9 @@
                   CanUserAddRows="False"
                   Margin="5,5,74,5">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Map Name" Binding="{Binding MapName}" IsReadOnly="True" Width="150"/>
-                    <DataGridTextColumn Header="Faction" Binding="{Binding Faction}" IsReadOnly="True" Width="120"/>
-                    <DataGridTextColumn Header="Peoples" Binding="{Binding PeoplesCount, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                    <DataGridTextColumn Header="地图名称" Binding="{Binding MapName}" IsReadOnly="True" Width="150"/>
+                    <DataGridTextColumn Header="派系" Binding="{Binding Faction}" IsReadOnly="True" Width="120"/>
+                    <DataGridTextColumn Header="人口" Binding="{Binding PeoplesCount, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -63,7 +63,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="Resources" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBlock Grid.Row="0" Text="资源" FontWeight="Bold" Margin="0,0,0,5"/>
 
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding SelectedItem.Resources, ElementName=CitiesGrid}">
