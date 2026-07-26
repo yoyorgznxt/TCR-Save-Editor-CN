@@ -1,36 +1,60 @@
-# TCR Save Editor
-A save editor for Total Conflict: Resistance
+# TCR存档修改器
 
-# How To Use
-### **1. Actions > Open a Save**
-* The directory should open up to the TCR saved games directory.
-	* If it cannot find it, you will need to find the save manually.
-* Save files are generally named "TCR_v85_0.sav"
-* "_0" is your save slot, so if I have a save in slot 24 it would be "TCR_v85_24.sav"
+《全面冲突：抵抗》专用存档修改工具
 
-### **2. Edit values**
+## 使用教程
 
-### **3. Actions > Save changes**
-* Changes will be written to the save file.
-* If there are any issues
-	* Please reach out to me on Discord or Steam.
-	* A message will be displayed citing the issue.
-* If there are no issues a message will display citing the file has been verified to work.
+### 1\. 操作栏 \> 打开存档文件
 
-### **4. Actions > Install To Game**
-* Edited save will be renamed to 
-* If a backup of the original save does not exist
-	* A new folder will be created in the saved games directory titled "TCRSEBackup"
-	* The original save file will be stored here in case there are any issues with the edited save.
+- 程序会自动跳转至《全面冲突：抵抗》游戏存档文件夹
 
-# Known Limitations
-* Army/battalion composition isn't editable yet. Currently only supports editing fixed value options like resources, population, and faction-wide stats (politics, authority, stability, dictatorship points)
+    - 若程序无法自动定位文件夹，需手动选择存档文件
 
-# Possible Future Additions
-* Army/battalion composition editing (adding units, weapons, etc)
-* Adding/removing resources
-* Any suggestions welcome!
+- 存档文件命名格式一般为：`TCR_v85_0.sav`
 
-# Notice
-* You will likely see a Windows Smart Screen warning when running the .exe. This is expected behavior. This happens because the executable is unsigned and has no download history yet. It's a heuristic based on how new/unrecognized the file is, not a finding that anything's actually wrong with it.
-* View the [VirusTotal](https://www.virustotal.com/gui/file/c1456f69f5dde88655065c1c3ae4dab2864b4278f570faa535613bbfdbbf27c5/detection) scan or build from source for confirmation of this builds integrity.
+- 文件名末尾数字代表存档档位，例如 24 号存档文件名为 `TCR_v85_24.sav`
+
+### 2\. 修改各项数值
+
+### 3\. 操作栏 \> 保存修改
+
+- 修改内容会写入存档文件
+
+- 若保存出现异常：
+
+    - 可通过 Discord 或 Steam 联系作者反馈问题
+
+    - 程序会弹窗提示具体报错信息
+
+- 若无异常，弹窗提示文件校验通过、可正常使用
+
+### 4\. 操作栏 \> 写入游戏存档
+
+程序会自动重命名修改后的存档文件
+
+- 若未存在原存档备份：
+
+    - 会在存档目录新建名为 `TCRSEBackup` 的备份文件夹
+
+    - 将原始存档存入该文件夹，防止修改后存档损坏无法恢复
+
+## 当前功能限制
+
+暂不支持编辑军队 / 营队编制；仅可修改固定数值类参数，例如资源、人口、全派系全局属性（政治值、权威值、稳定度、独裁点数）
+
+## 后续计划新增功能
+
+- 军队 / 营队编制编辑（新增兵种、武器装备等）
+
+- 新增 / 删减各类资源
+
+- 欢迎提交功能建议！
+
+## 注意事项
+
+1. 运行 exe 程序时，Windows 智能屏幕防火墙大概率弹出警告，属于正常现象。
+原因：程序未进行数字签名、下载量极低，系统仅根据文件陌生度触发提醒，不代表程序存在恶意风险。
+
+2. 可前往[VirusTotal 病毒检测页面](https://www.virustotal.com/gui/file/c1456f69f5dde88655065c1c3ae4dab2864b4278f570faa535613bbfdbbf27c5/detection)查看扫描报告，或自行编译源码，验证程序安全性。
+
+> （注：部分内容可能由 AI 生成）
