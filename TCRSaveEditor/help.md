@@ -1,23 +1,14 @@
-﻿# **How To Use**
+# TCR存档修改器使用步骤总结
 
-## **1. Action > Open a Save**
-* The directory should open up to the TCR saved games directory.
-	* If it cannot find it, you will need to find the save manually.
-* Save files are generally named "TCR_v85_0.sav"
-* "_0" is your save slot, so if I have a save in slot 24 it would be "TCR_v85_24.sav"
+1. **打开存档**
+软件会自动定位《全面冲突：抵抗》存档文件夹，定位失败则手动选取存档；存档命名规则为`TCR_v85_档位号.sav`，末尾数字对应存档槽位。
 
-## **2. Edit values**
+2. **修改数据**
+按需调整各类数值参数。
 
-## **3. Action > Save changes**
-* Changes will be written to the save file.
-* If there are any issues
-	* Please reach out to me on Discord or Steam.
-	* A message will be displayed citing the issue.
-* If there are no issues a message will display citing the file has been verified to work.
+3. **保存修改**
+改动写入存档文件；出错会弹出提示，可通过 Discord/Steam 联系作者；无报错则提示文件校验正常。
 
-## **4. Action > Install To Game**
-* Edited save will be renamed to 
-* If a backup of the original save does not exist
-	* A new folder will be created in the saved games directory titled "TCRSEBackup"
-	* The original save file will be stored here in case there are any issues with the edited save.
+4. **导入游戏**
+自动重命名修改后的存档；若无原存档备份，会在存档目录新建`TCRSEBackup`文件夹存放原始存档，避免修改档损坏丢失原进度。
 
