@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace TCRSaveEditor.Models
 {
@@ -13,6 +14,14 @@ namespace TCRSaveEditor.Models
         public long AuthorityPointsOffset { get; set; }
         public long StabilityPointsOffset { get; set; }
         public long DictatorShipOffset { get; set; }
+        // new stuff starts here
+        public int PlayerResearchBonus { get; set; }
+        public long PlayerResearchBonusOffset { get; set; }
+
+        public int PlayerConstructBonus { get; set; }
+        public long PlayerConstructBonusOffset { get; set; }
+        //public ObservableCollection<Resource> ResearchesData { get; set; } = new();
+        // new stuff ends here
 
         public float PoliticPoints
         {
@@ -33,6 +42,13 @@ namespace TCRSaveEditor.Models
         {
             get => _dictatorShip;
             set { _dictatorShip = value; OnPropertyChanged(nameof(DictatorShip)); }
+        }
+        private ObservableCollection<Resource> _researchesData = new();
+
+        public ObservableCollection<Resource> ResearchesData
+        {
+            get => _researchesData;
+            set { _researchesData = value; OnPropertyChanged(nameof(ResearchesData)); }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

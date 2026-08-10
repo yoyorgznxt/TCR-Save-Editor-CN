@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -53,7 +53,7 @@ namespace TCRSaveEditor
                     Directory.CreateDirectory(backPath);
                     
                 }
-                catch (UnauthorizedAccessException err)
+                 catch (UnauthorizedAccessException err)
                 {
                     MessageBox.Show("无法创建备份路径：访问被拒绝", backPath);
                     return;
@@ -155,6 +155,34 @@ namespace TCRSaveEditor
                     FilteredCities.Add(city);
             }
         }
+        private void RemoveResource_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is Resource resource)
+            {
+                if (CitiesGrid.SelectedItem is City city)
+                    city.Resources.Remove(resource);
+            }
+        }
+
+        private void AddResource_Click(object sender, RoutedEventArgs e)
+        {
+            if (CitiesGrid.SelectedItem is City city)
+            {
+                var name = NewResourceNameBox.Text?.Trim();
+                if (string.IsNullOrEmpty(name))
+                {
+                    MessageBox.Show("请输入资源名称。");
+                    return;
+                }
+                city.Resources.Add(new Resource { Name = name, Count = 0 });
+                NewResourceNameBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("请先选择一个城市。");
+            }
+        }
+
         private void ViewHelp_Click(object sender, RoutedEventArgs e)
         {
             string helpPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Help.md");

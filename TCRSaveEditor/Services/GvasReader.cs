@@ -293,6 +293,26 @@ namespace TCRSaveEditor.Services
                 target.DictatorShip = dictator;
                 target.DictatorShipOffset = dictatorField.ValueOffset;
             }
+            // new
+            // No longer using this, but leaving it here for future endeavors.
+            var researchBonusField = FindByName(topLevel, "PlayerResearchBonus");
+            if (researchBonusField != null && DecodeScalar(r, researchBonusField.ValueOffset, researchBonusField.Type) is int researchBonus)
+            {
+                target.PlayerResearchBonus = researchBonus;
+                target.PlayerResearchBonusOffset = researchBonusField.ValueOffset;
+            }
+
+            var constructBonusField = FindByName(topLevel, "PlayerConstructBonus");
+            if (constructBonusField != null && DecodeScalar(r, constructBonusField.ValueOffset, constructBonusField.Type) is int constructBonus)
+            {
+                target.PlayerConstructBonus = constructBonus;
+                target.PlayerConstructBonusOffset = constructBonusField.ValueOffset;
+            }
+            var researchesField = FindByName(topLevel, "ResearchesData");
+            target.ResearchesData = researchesField != null
+                ? DecodeResources(r, researchesField)
+                : new ObservableCollection<Resource>();
+            // end new
         }
     }
 }

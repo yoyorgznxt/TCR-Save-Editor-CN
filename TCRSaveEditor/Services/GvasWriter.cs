@@ -18,6 +18,13 @@ namespace TCRSaveEditor.Services
                 {
                     WriteInt32(writer, city.PeoplesCountOffset, city.PeoplesCount);
                     WriteInt32(writer, city.ReservistsCountOffset, city.ReservistsCount);
+                    // new
+                    // no longer used, leaving for future
+                    WriteInt32(writer, meta.PlayerResearchBonusOffset, meta.PlayerResearchBonus);
+                    WriteInt32(writer, meta.PlayerConstructBonusOffset, meta.PlayerConstructBonus);
+                    foreach (var research in meta.ResearchesData)
+                        WriteInt32(writer, research.CountValueOffset, research.Count);
+                    // end new
 
                     foreach (var resource in city.Resources)
                         WriteInt32(writer, resource.CountValueOffset, resource.Count);
@@ -62,6 +69,13 @@ namespace TCRSaveEditor.Services
             {
                 CheckInt32(reader, city.PeoplesCountOffset, city.PeoplesCount, $"{city.MapName}.PeoplesCount");
                 CheckInt32(reader, city.ReservistsCountOffset, city.ReservistsCount, $"{city.MapName}.ReservistsCount");
+                // new
+                // -- no longer used, leaving for future
+                CheckInt32(reader, meta.PlayerResearchBonusOffset, meta.PlayerResearchBonus, "PlayerResearchBonus");
+                CheckInt32(reader, meta.PlayerConstructBonusOffset, meta.PlayerConstructBonus, "PlayerConstructBonus");
+                foreach (var research in meta.ResearchesData)
+                    CheckInt32(reader, research.CountValueOffset, research.Count, $"Research.{research.Name}");
+                // end new
 
                 foreach (var resource in city.Resources)
                     CheckInt32(reader, resource.CountValueOffset, resource.Count, $"{city.MapName}.{resource.Name}");
