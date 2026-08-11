@@ -1,6 +1,6 @@
 # 《全面冲突：抵抗》存档编辑器
 《全面冲突：抵抗》(Total Conflict: Resistance) 的存档编辑器
-需要 .Net9 运行环境
+需要 .Net10 运行环境
 
 ## qwen3.6翻译，forked from [MaximumLeet/TCR-Save-Editor](https://github.com/MaximumLeet/TCR-Save-Editor/)
 
